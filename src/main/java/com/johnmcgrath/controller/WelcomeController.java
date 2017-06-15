@@ -1,4 +1,4 @@
-package webapp.controller;
+package com.johnmcgrath.controller;
 
 /**
  * Created by root on 6/14/17.
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import webapp.service.GenericWelcomeService;
+import com.johnmcgrath.service.WelcomeService;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class WelcomeController {
 
     @Autowired
-    private GenericWelcomeService welcomeService;
+    private WelcomeService welcomeService;
 
     @RequestMapping("/")
     public String doWelcome(Model model) {

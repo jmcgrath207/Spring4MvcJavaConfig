@@ -1,4 +1,4 @@
-package webapp.config;
+package com.johnmcgrath.config;
 
 
 import org.springframework.web.WebApplicationInitializer;
