@@ -22,7 +22,7 @@
 
 
 <c:forEach var="row" items="${rs.rows}">
-    Name: ${row.comany_name} <br/>
+    Name: ${row.company_name} <br/>
     Year: ${row.year_of_incorporation}<br/>
     Zip: ${row.postal_code}<br/>
     Emp Count: ${row.employee_count}<br/>
