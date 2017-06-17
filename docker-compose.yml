@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  mysql:
+    restart: always
+    image: mysql:5.7.18
+    ports:
+      - "3306:3306"
+    env_file: ./mysql/.after_build_env
