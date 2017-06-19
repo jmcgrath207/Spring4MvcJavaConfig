@@ -1,11 +1,13 @@
 package com.johnmcgrath.config;
 
+import com.johnmcgrath.interceptors.HeaderInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
@@ -29,15 +31,15 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         return dataSource;
     }
 
-    @Bean
-    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
-        RequestMappingHandlerMapping rmhm = new RequestMappingHandlerMapping();
-        rmhm.setUseSuffixPatternMatch(true);
-        rmhm.setUseTrailingSlashMatch(true);
-        return rmhm;
-    }
+    //@Bean // changes the default behavior of request mapping methods.
+    //public RequestMappingHandlerMapping requestMappingHandlerMapping() {
+    //    RequestMappingHandlerMapping rmhm = new RequestMappingHandlerMapping();
+    //    rmhm.setUseSuffixPatternMatch(true);
+    //    rmhm.setUseTrailingSlashMatch(true);
+    //    return rmhm;
+    //}
 
-    @Bean("urlbasedviewresolver")
+    @Bean()
     public UrlBasedViewResolver urlBasedViewResolver() {
         UrlBasedViewResolver  resolver = new UrlBasedViewResolver();
         resolver.setPrefix("WEB-INF/views/");
@@ -51,5 +53,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/").setViewName("home");
     }
 
-
+    @Override // use generate to create override method; inject the custom HeaderInterceptor class
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new HeaderInterceptor());
+    }
 }

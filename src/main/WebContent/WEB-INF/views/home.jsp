@@ -9,17 +9,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>organization home page</title>
-    <h1>Organization hoem page</h1>
-
-    <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-    <ul>
-        <li><a href="${contextPath}/jstl"> List of organizations using JSTL sql tags</a><br/></li>
-        <li><a href="${contextPath}/service"> List of organizations using Service</a><br/></li>
-
-    </ul>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Organization home page</title>
 </head>
 <body>
-
+<h2 align="center" style="color:#DF0101">Welcome! <c:out value="${greeting}"></c:out></h2>
+<hr/>
+<h1 align="center">Organization Details</h1>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<div style="text-align:center">
+    <a href="${contextPath}/location" style="font-size: 30px">Click here to get organization details for your location.</a>
+</div>
 </body>
 </html>
