@@ -10,6 +10,7 @@
         <maven.plugin.compiler>3.6.1</maven.plugin.compiler>
         <maven.plugin.war>3.1.0</maven.plugin.war>
         <mysql.version>6.0.6</mysql.version>
+        <slf4j.version>1.7.25</slf4j.version>
     </properties>
 
     <groupId>${spring.name}</groupId>
@@ -19,6 +20,19 @@
     <name>${spring.name}</name>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
