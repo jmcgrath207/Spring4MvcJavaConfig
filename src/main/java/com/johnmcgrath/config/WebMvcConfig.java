@@ -2,6 +2,7 @@ package com.johnmcgrath.config;
 
 import com.johnmcgrath.interceptors.ExecutionTimerInterceptor;
 import com.johnmcgrath.interceptors.HeaderInterceptor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,16 +17,10 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import javax.sql.DataSource;
 
-@Configuration
+@Configuration // adds the middle ware or the beans at startup
 @ComponentScan("com.johnmcgrath.*")
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
-
-    @Autowired
-    private HeaderInterceptor headerInterceptor;
-
-    @Autowired
-    private ExecutionTimerInterceptor executionTimerInterceptor;
 
 
 
@@ -49,7 +44,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     @Bean()
     public UrlBasedViewResolver urlBasedViewResolver() {
         UrlBasedViewResolver  resolver = new UrlBasedViewResolver();
-        resolver.setPrefix("WEB-INF/views/");
+        resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         return resolver;
@@ -59,6 +54,12 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry){
         registry.addViewController("/").setViewName("home");
     }
+
+    @Autowired
+    private HeaderInterceptor headerInterceptor;
+
+    @Autowired
+    private ExecutionTimerInterceptor executionTimerInterceptor;
 
     @Override // use generate to create override method; inject the custom HeaderInterceptor class
     public void addInterceptors(InterceptorRegistry registry) {
