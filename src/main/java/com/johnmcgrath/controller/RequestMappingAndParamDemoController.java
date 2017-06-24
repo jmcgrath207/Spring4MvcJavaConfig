@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
-@Controller //http://localhost:8080/requestMappingAndParamDemo/home
+@Controller
 @RequestMapping(value="/requestMappingAndParamDemo/*")
 public class RequestMappingAndParamDemoController {
+    // * aside from being a wild card, it automatically redirect to methods without a requestmap
+
 
     private static Logger LOGGER = LoggerFactory.getLogger(RequestMappingAndParamDemoController.class);
 
@@ -19,6 +21,14 @@ public class RequestMappingAndParamDemoController {
     public String home() {
         System.out.println("There was a match");
         return "parmHome";
+    }
+
+    //test 1: Testing @RequestParam without explicit attributes
+    @RequestMapping(value="/test1")
+    public String requestMappingAndParamTest1(@RequestParam("orgname") String orgName, Model model) {
+        model.addAttribute("orgname", orgName);
+        model.addAttribute("testserial", "test1");
+        return "parmResults";
     }
 
 }
