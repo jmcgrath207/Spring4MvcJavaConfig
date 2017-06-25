@@ -1,5 +1,7 @@
 
 
 
-#MVC hello world
-http://websystique.com/springmvc/spring-4-mvc-helloworld-tutorial-annotation-javaconfig-full-example/
+Find out about issue with
+
+<c:forEach var="parameter" items="${param}"> on line 18 of parmResults2.jsp
+

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: root
@@ -17,6 +18,7 @@
     <c:forEach var="parameter" items="${param}">
         <h3 style="color:#DF0101"><c:out value="${parameter.key}"/> = <c:out value="${parameter.value}"/></h3>
     </c:forEach>
+    ${orgname}
 </div>
 </body>
 </html>

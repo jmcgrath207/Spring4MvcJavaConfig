@@ -17,10 +17,10 @@ public class RequestMappingAndParamDemoController {
     private static Logger LOGGER = LoggerFactory.getLogger(RequestMappingAndParamDemoController.class);
 
 
-    //@RequestMapping(value = "/home")
-    //public String home() {
-    //    return "parmHome";
-    //}
+    @RequestMapping(value = "/home")
+    public String home() {
+        return "parmHome";
+    }
 
     // test 1: Testing @RequestParam without explicit attributes
     @RequestMapping(value = "/test1")
@@ -66,6 +66,7 @@ public class RequestMappingAndParamDemoController {
     // test 6, subtest 1: Testing removal of @RequestMapping ambiguity with the
     // same base URI but
     // with different a different parameter
+    // http://localhost:8080/requestMappingAndParamDemo/test6?orgname=test
     @RequestMapping(value = "/test6", params = "orgname")
     public String requestMappingAndParamTest6Subtest1(@RequestParam String orgname, Model model) {
         model.addAttribute("orgname", orgname);
