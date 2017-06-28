@@ -49,6 +49,7 @@
         <h3>test 5: Testing @ModelAttribute annotation with 'value' attribute and default binding</h3>
         <table>
             <tr>
+                <!-- path is mapped to the getter and setters methods in a object -->
                 <td><form:label path="city">City Name</form:label></td>
                 <td><form:input path="city"/></td>
             </tr>

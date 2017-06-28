@@ -11,16 +11,18 @@ import org.springframework.web.servlet.ModelAndView;
 import com.johnmcgrath.domain.Address;
 
 @Controller
+@RequestMapping(value = "/ModelAttributeDemoController")
 public class ModelAttributeDemoController {
     private static Logger LOGGER = LoggerFactory.getLogger(ModelAttributeDemoController.class);
 
-    @RequestMapping(value = "/home")
-    public String home() {
-        LOGGER.info("INSIDE home: " + System.currentTimeMillis());
-        return "modelAttributeHome";
-    }
+    //@RequestMapping(value = "/home")
+    //public String home() {
+    //    LOGGER.info("INSIDE home: " + System.currentTimeMillis());
+    //    return "modelAttributeHome";
+    //}
 
     // version 2 of our home() method
+    // spring expect a default attribute named command to map to a object
     @RequestMapping(value = "/home2")
     public ModelAndView home2() {
         ModelAndView mav = new ModelAndView();
@@ -56,6 +58,7 @@ public class ModelAttributeDemoController {
 
     // Test 1: Demonstrating the usage of @ModelAttribute annotation (on a method)
     // to add multiple attributes
+    // This is way to populate the model with varibles or a actual data object
     @ModelAttribute
     public void modelAttributeTest1(Model model) {
         LOGGER.info("INSIDE modelAttributeTest1: " + System.currentTimeMillis());
