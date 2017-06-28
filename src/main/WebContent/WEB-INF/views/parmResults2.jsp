@@ -15,10 +15,13 @@
 <body>
 <div align="center">
     <h1>${testserial}: @RequestMapping and @RequestParam Test Results</h1>
+
+
+    <!-- ${param} is dynamic name for url Parms that comes in the form of a list -->
+
     <c:forEach var="parameter" items="${param}">
         <h3 style="color:#DF0101"><c:out value="${parameter.key}"/> = <c:out value="${parameter.value}"/></h3>
     </c:forEach>
-    ${orgname}
 </div>
 </body>
 </html>

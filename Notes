@@ -1,7 +1,0 @@
-
-
-
-Find out about issue with
-
-<c:forEach var="parameter" items="${param}"> on line 18 of parmResults2.jsp
-

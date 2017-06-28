@@ -77,7 +77,8 @@ public class RequestMappingAndParamDemoController {
     // test 6, subtest 2: Testing removal of @RequestMapping ambiguity with the
     // same base URI but
     // with different a different parameter
-    @RequestMapping(value = "/test6", params = "empcount")
+    //http://localhost:8080/requestMappingAndParamDemo/test6/subtest2?empcount=test
+    @RequestMapping(value = "/test6/subtest2", params = "empcount")
     public String requestMappingAndParamTest6Subtest2(@RequestParam String empcount, Model model) {
         model.addAttribute("orgname", empcount);
         model.addAttribute("testserial", "test6-subtest2");
@@ -86,6 +87,7 @@ public class RequestMappingAndParamDemoController {
 
     // test 6, subtest 3: Testing removal of @RequestMapping with multiple
     // request params
+    // http://localhost:8080/requestMappingAndParamDemo/test6/subtest3?empcount=test&orgname=something
     @RequestMapping(value = "/test6/subtest3", method = RequestMethod.GET, params = { "orgname", "empcount" })
     public String requestMappingAndParamTest6Subtest3(@RequestParam String orgname, @RequestParam String empcount,
                                                       Model model) {
@@ -95,15 +97,18 @@ public class RequestMappingAndParamDemoController {
         return "parmResults2";
     }
 
-    // test 6, subtest 4: Testing with multiple request params and @RequestParam with single param
+    // test 6, subtest 4: Testing with multiple request params being render without being added to the model
+    // http://localhost:8080/requestMappingAndParamDemo/test6/subtest4?empcount=test&orgname=something
     @RequestMapping(value = "/test6/subtest4", method = RequestMethod.GET, params = { "orgname", "empcount" })
     public String requestMappingAndParamTest6Subtest4(@RequestParam String orgname, Model model) {
-        model.addAttribute("orgname", orgname);
+        //model.addAttribute("orgname", orgname);
         model.addAttribute("testserial", "test6-subtest4");
         return "parmResults2";
     }
 
     // test 7 & 8: Testing @RequestParam with multiple request URI's
+    // http://localhost:8080/requestMappingAndParamDemo/test7?orgname=something
+    // or http://localhost:8080/requestMappingAndParamDemo/test8?orgname=something
     @RequestMapping(value = {"/test7", "/test8"}, method = RequestMethod.GET)
     public String requestMappingAndParamTest7and8(@RequestParam String orgname, Model model, HttpServletRequest request) {
         model.addAttribute("orgname", orgname);
